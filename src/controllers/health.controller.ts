@@ -10,9 +10,12 @@ const dbStates: Record<number, string> = {
 
 export const getHealth = (_req: Request, res: Response) => {
   res.json({
-    status: "ok",
-    uptime: process.uptime(),
-    timestamp: new Date().toISOString(),
-    db: dbStates[mongoose.connection.readyState] ?? "unknown",
+    success: true,
+    data: {
+      status: "ok",
+      uptime: process.uptime(),
+      timestamp: new Date().toISOString(),
+      db: dbStates[mongoose.connection.readyState] ?? "unknown",
+    },
   });
 };
